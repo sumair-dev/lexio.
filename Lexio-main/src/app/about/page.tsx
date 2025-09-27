@@ -39,7 +39,7 @@ export default function AboutPage() {
               
               <div className="space-y-6 text-lg leading-relaxed">
                 <p className="text-gray-600">
-                  i am sumair, a 16 year old who loves doing nothing and creating projects. 
+                  i am sumair, a 16 year old who loves doing nothing. 
                   Dream is to hopefully work at a startup.
                 </p>
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
                   <span>•</span>
                   <span>16 years old</span>
                   <span>•</span>
-                  <span>entrepreneur</span>
+                  <span>student</span>
                 </div>
               </div>
 

@@ -11,7 +11,6 @@ interface ContentCardProps {
   isAnimating?: boolean;
   hasAnimated?: boolean;
   additionalSectionsCount?: number;
-  onAddToQueue?: () => void;
 }
 
 const truncateAtWordBoundary = (text: string, maxLength: number): string => {
@@ -29,8 +28,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   index = 0,
   isAnimating = false,
   hasAnimated = false,
-  additionalSectionsCount = 0,
-  onAddToQueue
+  additionalSectionsCount = 0
 }) => {
 
   if (type === 'more-sections') {
@@ -69,20 +67,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
           {truncateAtWordBoundary(content, 150)}
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-white/50 mb-2">
+        <div className="flex items-center gap-2 text-xs text-white/50">
           <span>{content.split(' ').length} words</span>
           <span>•</span>
           <span>~{Math.ceil(content.split(' ').length / 200)}m</span>
         </div>
-
-        {onAddToQueue && (
-          <button
-            className="mt-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors"
-            onClick={onAddToQueue}
-          >
-            +
-          </button>
-        )}
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-white/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl" />
     </div>

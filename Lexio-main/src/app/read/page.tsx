@@ -174,7 +174,7 @@ const ReadPageContent: React.FC = () => {
                               index={index}
                               isAnimating={isAnimating}
                               hasAnimated={hasAnimated}
-                              onAddToQueue={() => handleAddSectionToQueue(index)}
+                              
                             />
                           );
                         })}
@@ -188,7 +188,7 @@ const ReadPageContent: React.FC = () => {
                             index={scrapedData.sections.length}
                             isAnimating={isAnimating}
                             hasAnimated={hasAnimated}
-                            onAddToQueue={handleAddSummaryToQueue}
+                        
                           />
                         )}
                       </div>
