@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { message, availableSections, context } = await request.json();
+    const { message, availableSections, context, scrapedContent } = await request.json();
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json(
@@ -33,8 +33,13 @@ export async function POST(request: NextRequest) {
     // Build context for ChatGPT about available content
     const sectionsContext = availableSections && availableSections.length > 0 
       ? `\n\nAvailable content sections:\n${availableSections.map((section: AvailableSection, index: number) => 
-          `${index + 1}. "${section.title}" - ${section.content.substring(0, 150)}...`
+          `${index + 1}. \"${section.title}\" - ${section.content.substring(0, 150)}...`
         ).join('\n')}`
+      : '';
+
+    // Add scrapedContent to the system prompt if provided
+    const scrapedContext = scrapedContent && typeof scrapedContent === 'string' && scrapedContent.trim().length > 0
+      ? `\n\nHere is the full content from the website you added:\n${scrapedContent.substring(0, 3000)}\n(You may use this content to answer the user's questions.)`
       : '';
 
     const systemPrompt = `You are Lexio AI, a smart learning assistant that helps users discover and organize content for text-to-speech listening. Your role is to:
@@ -53,7 +58,7 @@ When recommending content:
 - If no sections match well, acknowledge this and suggest alternatives
 - Use encouraging, educational language
 
-Context about the user's current session: ${context || 'New conversation'}${sectionsContext}`;
+Context about the user's current session: ${context || 'New conversation'}${sectionsContext}${scrapedContext}`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini', // Using the more cost-effective model
