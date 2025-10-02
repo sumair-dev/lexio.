@@ -336,7 +336,7 @@ const WebSpeechReader: React.FC<WebSpeechReaderProps> = ({
   // Set up interval for updating current word
   useEffect(() => {
     if (isPlaying && !isPaused) {
-      timeUpdateInterval.current = setInterval(updateCurrentWord, 100);
+      timeUpdateInterval.current = setInterval(updateCurrentWord, 90);
     } else {
       if (timeUpdateInterval.current) {
         clearInterval(timeUpdateInterval.current);

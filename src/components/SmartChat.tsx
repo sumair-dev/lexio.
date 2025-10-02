@@ -363,7 +363,7 @@ export default function SmartChat({
     {
       id: '1',
       type: 'system',
-      content: "Hi! I'm your Lexio AI learning assistant powered by ChatGPT. Tell me what you'd like to learn about and I'll intelligently find and add the most relevant content to your queue. Try saying something like 'I want to learn about trade networks' or 'teach me about the Mongol Empire'.",
+      content: "Hi! I'm your Lexio learning assistant!. Tell me what you'd like to learn about and I'll intelligently find and add the most relevant content to your queue. Try saying something like 'I want to learn about trade networks' or 'teach me about the Mongol Empire'. Or ask me anything about your source!",
       timestamp: new Date(),
     }
   ]);
