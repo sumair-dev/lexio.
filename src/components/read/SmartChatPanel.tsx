@@ -245,7 +245,7 @@ const SmartChatPanel: React.FC<SmartChatPanelProps> = ({
     {
       id: '1',
       type: 'assistant',
-      content: "Hi! I'm your smart assistant powered by ChatGPT. I can help you build your listening queue by intelligently analyzing your learning interests. Just tell me what you want to learn about, and I'll automatically find and add relevant sections to your queue!",
+      content: "Hi! I'm Lexio your learning assistant. I can help you build your listening queue by intelligently analyzing your learning interests. Just tell me what you want to learn about, and I'll automatically find and add relevant sections to your queue!",
       timestamp: new Date(),
     }
   ]);
