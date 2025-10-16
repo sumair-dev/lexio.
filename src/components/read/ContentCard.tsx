@@ -11,6 +11,7 @@ interface ContentCardProps {
   isAnimating?: boolean;
   hasAnimated?: boolean;
   additionalSectionsCount?: number;
+  onAddToQueue?: (index: number) => void;
 }
 
 const truncateAtWordBoundary = (text: string, maxLength: number): string => {
@@ -28,7 +29,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
   index = 0,
   isAnimating = false,
   hasAnimated = false,
-  additionalSectionsCount = 0
+  additionalSectionsCount = 0,
+  onAddToQueue
 }) => {
 
   if (type === 'more-sections') {
@@ -53,13 +55,24 @@ const ContentCard: React.FC<ContentCardProps> = ({
   return (
     <div className={`relative overflow-hidden bg-black/40 backdrop-blur-sm border border-white/15 rounded-xl transition-all duration-500 hover:border-white/30 hover:bg-black/30 hover:shadow-lg hover:shadow-white/10 group ${isAnimating ? `card-animate-enter card-animate-delay-${Math.min(index, 5)}` : ''} ${hasAnimated ? 'animate-visible' : ''}`}>
       <div className="p-4">
-        <div className="mb-3">
-          <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight mb-1">{title}</h3>
-          {type === 'summary' && (
-            <div className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-              <span className="text-xs text-blue-400 font-medium">Summary</span>
-            </div>
+        <div className="mb-3 flex items-start justify-between">
+          <div>
+            <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight mb-1">{title}</h3>
+            {type === 'summary' && (
+              <div className="flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                <span className="text-xs text-blue-400 font-medium">Summary</span>
+              </div>
+            )}
+          </div>
+          {onAddToQueue && type === 'section' && (
+            <button
+              onClick={() => onAddToQueue(index)}
+              className="ml-2 p-1 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors"
+              title="Add to Listening Queue"
+            >
+              <span className="text-lg font-bold leading-none">+</span>
+            </button>
           )}
         </div>
 

@@ -174,7 +174,7 @@ const ReadPageContent: React.FC = () => {
                               index={index}
                               isAnimating={isAnimating}
                               hasAnimated={hasAnimated}
-                              
+                              onAddToQueue={handleAddSectionToQueue}
                             />
                           );
                         })}
