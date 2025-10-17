@@ -1,3 +1,5 @@
+yes the documentation is entirely AI, i am not writing all that
+
 # Lexio
 
 A modern web application built with Next.js 15, TypeScript, and Tailwind CSS, featuring responsive design, dark mode support, and clean minimal styling.
@@ -227,4 +229,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.
-yes the documentation is entirely AI, i am not writing all that
